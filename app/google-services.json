@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "561673231649",
+    "project_id": "alramejang",
+    "storage_bucket": "alramejang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561673231649:android:5ab7a2678fbd46b340b260",
+        "android_client_info": {
+          "package_name": "com.krapoi.Alram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561673231649-ij7f50b4ucgmajbbkn6gi63rm6oo49ha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.krapoi.Alram",
+            "certificate_hash": "fb23ed0e155484d3de8184fcf24c3fe73f3296bb"
+          }
+        },
+        {
+          "client_id": "561673231649-f4kfvcu5k7gh3ll0ibok8von38afoush.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArAUPGi_UotuEVl7mJRF9v4ktm2FNI450"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561673231649-f4kfvcu5k7gh3ll0ibok8von38afoush.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
