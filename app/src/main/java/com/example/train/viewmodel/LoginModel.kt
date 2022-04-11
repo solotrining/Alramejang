@@ -1,5 +1,6 @@
 package com.example.train.viewmodel
 
+
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
@@ -12,7 +13,8 @@ class LoginModel : ViewModel() {
     }
 
     fun getgso(): GoogleSignInOptions {
-        return gso;
+        return gso
     }
+
 
 }

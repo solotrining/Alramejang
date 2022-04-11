@@ -2,6 +2,7 @@ package com.example.train.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,7 +11,6 @@ import com.example.train.databinding.ActivityLoginBinding
 import com.example.train.viewmodel.LoginModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.firebase.auth.FirebaseAuth
 
@@ -26,9 +26,6 @@ class LoginActivity : AppCompatActivity() {
     private var RC_SIGN_IN = 9001
     private var signInButton: SignInButton? = null
 
-    val loginModel:LoginModel? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,10 +33,19 @@ class LoginActivity : AppCompatActivity() {
         login.loginViewModel = model
         login.lifecycleOwner = this
 
-        signInButton = findViewById(R.id.Google_Login);
-        mAuth = FirebaseAuth.getInstance();
+        signInButton = findViewById(R.id.Google_Login)
+        mAuth = FirebaseAuth.getInstance()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, model.getgso())
+
+
+        val signIn:TextView = findViewById(R.id.to_sign_in)
+        signIn.setOnClickListener {
+            val goSignIn = Intent(applicationContext, SigninActivity::class.java)
+            startActivity(goSignIn)
+        }
+
+
 
         //구글 아이디로 이미 로그인 했다면, 바로 로그인
         if (mAuth!!.currentUser != null) {
@@ -47,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
 
     }
 }

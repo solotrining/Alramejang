@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Train</string>
+    <string name="DifferentWayLogin">다른 방법으로 로그인</string>
+    <string name="SignIn">회원가입</string>
+    <string name="Login">로그인</string>
+    <string name="Password">비밀번호</string>
+    <string name="ID">아이디</string>
+    <string name="LOGO">로고임</string>
+    <string name="checkPassword">비밀번호 확인</string>
+    <string name="NickName">닉네임</string>
 </resources>
