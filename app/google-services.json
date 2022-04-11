@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:561673231649:android:5ab7a2678fbd46b340b260",
         "android_client_info": {
-          "package_name": "com.krapoi.Alram"
+          "package_name": "com.example.train"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "561673231649-ij7f50b4ucgmajbbkn6gi63rm6oo49ha.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.krapoi.Alram",
+            "package_name": "com.example.train",
             "certificate_hash": "fb23ed0e155484d3de8184fcf24c3fe73f3296bb"
           }
         },
