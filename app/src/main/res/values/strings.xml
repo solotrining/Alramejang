@@ -8,4 +8,6 @@
     <string name="LOGO">로고임</string>
     <string name="checkPassword">비밀번호 확인</string>
     <string name="NickName">닉네임</string>
+    <string name="Logout">로그아웃</string>
+    <string name="Withdrawal">회원탈퇴</string>
 </resources>

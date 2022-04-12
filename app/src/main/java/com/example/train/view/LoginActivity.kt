@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.train.R
 import com.example.train.databinding.ActivityLoginBinding
+import com.example.train.module.Auth
 import com.example.train.module.UserDTO
 import com.example.train.viewmodel.LoginModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -31,10 +32,7 @@ class LoginActivity : AppCompatActivity() {
     private val model:LoginModel by viewModels()
 
     //Google Login
-
     private var mGoogleSignInClient: GoogleSignInClient? = null
-    private var RCSIGNIN = 9001
-    private var signInButton: SignInButton? = null
 
     private lateinit var activityLauncher : ActivityResultLauncher<Intent>
 
@@ -45,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         login.loginViewModel = model
         login.lifecycleOwner = this
 
-        model.mAuth = FirebaseAuth.getInstance()
+        model.auth = FirebaseAuth.getInstance()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, model.getgso())
 
@@ -70,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
         //구글 아이디로 이미 로그인 했다면, 바로 로그인
-        if (model.mAuth!!.currentUser != null) {
+        if (model.auth!!.currentUser != null) {
             val intent = Intent(application, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -81,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
             startActivity(Intent(this, MainActivity::class.java))
         }
+
     }
 
 }
