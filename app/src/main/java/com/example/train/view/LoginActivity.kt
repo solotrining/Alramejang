@@ -3,6 +3,7 @@ package com.example.train.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class LoginActivity : AppCompatActivity() {
@@ -61,17 +63,31 @@ class LoginActivity : AppCompatActivity() {
 
         //구글 아이디로 이미 로그인 했다면, 바로 로그인
         if (model.auth!!.currentUser != null) {
-            val intent = Intent(application, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            goMain(model.auth?.currentUser)
         }
 
         login.GoogleLogin.setOnClickListener {
             activityLauncher.launch(mGoogleSignInClient!!.signInIntent)
-            finish()
-            startActivity(Intent(this, MainActivity::class.java))
+            goMain(model.auth?.currentUser)
+        }
+
+        login.loginButton.setOnClickListener {
+            model.loginNative(login.loginId.text.toString(),login.loginPw.text.toString())
+            if(model.getResult() == "suc"){
+                goMain(model.auth?.currentUser)
+            }else{
+                Toast.makeText(baseContext,"로그인 실패",Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
 
+
+    fun goMain(user: FirebaseUser?){
+        if(user != null) {
+            val intent = Intent(application, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 }

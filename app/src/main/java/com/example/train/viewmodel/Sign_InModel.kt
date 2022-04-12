@@ -14,7 +14,6 @@ class Sign_InModel : ViewModel() {
 
     var auth = Auth.mAuth
 
-    var success:Boolean = false
 
     fun createAccount(email: String, password: String,activity:Activity) {
         auth = Firebase.auth
@@ -22,15 +21,12 @@ class Sign_InModel : ViewModel() {
             auth?.createUserWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
-                        success = true
                         Log.e("success","success")
                         Toast.makeText(
                             activity.applicationContext, "계정 생성 완료.",
                             Toast.LENGTH_SHORT
                         ).show()
-
                     } else {
-                        success = false
                         Toast.makeText(
                             activity.applicationContext, "계정 생성 실패",
                             Toast.LENGTH_SHORT
