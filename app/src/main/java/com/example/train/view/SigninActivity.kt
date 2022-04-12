@@ -2,6 +2,7 @@ package com.example.train.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -22,16 +23,16 @@ class SigninActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.signInButton.setOnClickListener {
-            if(binding.signInPw.text == binding.signInPwCheck.text) {
-                model.createAccount(binding.signInId.toString(), binding.signInPw.toString(), this)
-                if(model.success)
-                    finish()
+            if(binding.signInPw.text.toString() == binding.signInPwCheck.text.toString()) {
+                model.createAccount(binding.signInId.text.toString(), binding.signInPw.text.toString(), this)
+                finish()
             }
             else {
                 Toast.makeText(
                     applicationContext, "비밀번호가 다릅니다.",
                     Toast.LENGTH_SHORT
                 ).show()
+
             }
 
         }
