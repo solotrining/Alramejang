@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
 
             }
 
-        //구글 아이디로 이미 로그인 했다면, 바로 로그인
+        //이미 로그인 했다면, 바로 로그인
         if (model.auth!!.currentUser != null) {
             goMain(model.auth?.currentUser)
         }

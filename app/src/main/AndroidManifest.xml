@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Train">
         <activity
+            android:name=".view.WriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.SigninActivity"
             android:exported="false" />
         <activity

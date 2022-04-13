@@ -18,7 +18,7 @@ class LoginModel : ViewModel() {
             .requestIdToken("561673231649-f4kfvcu5k7gh3ll0ibok8von38afoush.apps.googleusercontent.com")
             .requestEmail()
             .build()
-        var result:String = "fail"
+        lateinit var result:String
     }
 
 
