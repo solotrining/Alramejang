@@ -37,5 +37,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             FirebaseAuth.getInstance().currentUser!!.delete()
         }
+
+        mbinding.mainWrtieContents.setOnClickListener {
+            var intent = Intent(applicationContext,WriteActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

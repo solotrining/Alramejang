@@ -8,12 +8,15 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.train.R
 import com.example.train.databinding.ActivitySignInBinding
+import com.example.train.module.UserDataBase
 import com.example.train.viewmodel.Sign_InModel
 
 class SigninActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivitySignInBinding
     private val model:Sign_InModel by viewModels()
+
+    private val db:UserDataBase = UserDataBase()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +28,7 @@ class SigninActivity : AppCompatActivity() {
         binding.signInButton.setOnClickListener {
             if(binding.signInPw.text.toString() == binding.signInPwCheck.text.toString()) {
                 model.createAccount(binding.signInId.text.toString(), binding.signInPw.text.toString(), this)
+                db.putUser(binding.signInNickName.text.toString(), binding.signInId.text.toString())
                 finish()
             }
             else {

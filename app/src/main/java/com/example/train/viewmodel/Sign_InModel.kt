@@ -21,20 +21,20 @@ class Sign_InModel : ViewModel() {
             auth?.createUserWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
-                        Log.e("success","success")
                         Toast.makeText(
                             activity.applicationContext, "계정 생성 완료.",
                             Toast.LENGTH_SHORT
                         ).show()
+
                     } else {
                         Toast.makeText(
                             activity.applicationContext, "계정 생성 실패",
                             Toast.LENGTH_SHORT
                         ).show()
-                        Log.e("error",task.result.toString())
                     }
                 }
         }
+
     }
 
 

@@ -73,11 +73,12 @@ class LoginActivity : AppCompatActivity() {
 
         login.loginButton.setOnClickListener {
             model.loginNative(login.loginId.text.toString(),login.loginPw.text.toString())
-            if(model.getResult() == "suc"){
+
+            if(model.getResult() == "suc")
                 goMain(model.auth?.currentUser)
-            }else{
+            else
                 Toast.makeText(baseContext,"로그인 실패",Toast.LENGTH_SHORT).show()
-            }
+
         }
 
     }
