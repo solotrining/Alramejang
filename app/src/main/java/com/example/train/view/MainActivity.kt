@@ -34,8 +34,10 @@ class MainActivity : AppCompatActivity() {
 
         mbinding.Withdrawal.setOnClickListener {
             val intent = Intent(applicationContext,LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
             FirebaseAuth.getInstance().currentUser!!.delete()
+            finish()
         }
 
         mbinding.mainWrtieContents.setOnClickListener {

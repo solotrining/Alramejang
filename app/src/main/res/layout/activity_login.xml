@@ -6,6 +6,9 @@
         <variable
             name="loginViewModel"
             type="com.example.train.viewmodel.LoginModel" />
+        <variable
+            name="activity"
+            type="com.example.train.view.LoginActivity" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -72,7 +75,6 @@
         android:text="@string/Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 

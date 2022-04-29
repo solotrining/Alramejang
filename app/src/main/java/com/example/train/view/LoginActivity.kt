@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var login: ActivityLoginBinding
+    lateinit var login: ActivityLoginBinding
     private val model:LoginModel by viewModels()
 
     //Google Login
@@ -72,19 +72,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.loginButton.setOnClickListener {
-            model.loginNative(login.loginId.text.toString(),login.loginPw.text.toString())
-
-            if(model.getResult() == "suc")
-                goMain(model.auth?.currentUser)
-            else
-                Toast.makeText(baseContext,"로그인 실패",Toast.LENGTH_SHORT).show()
-
+            model.loginNative(login.loginId.text.toString(),login.loginPw.text.toString(),this.application)
         }
 
     }
 
-
-    fun goMain(user: FirebaseUser?){
+    private fun goMain(user: FirebaseUser?){
         if(user != null) {
             val intent = Intent(application, MainActivity::class.java)
             startActivity(intent)

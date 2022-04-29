@@ -26,14 +26,20 @@ class SigninActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         binding.signInButton.setOnClickListener {
+
             if(binding.signInPw.text.toString() == binding.signInPwCheck.text.toString()) {
                 model.createAccount(binding.signInId.text.toString(), binding.signInPw.text.toString(), this)
-                db.putUser(binding.signInNickName.text.toString(), binding.signInId.text.toString())
+
+                db.putUser(binding.signInNickName.text.toString(),
+                    binding.signInId.text.toString(),
+                    binding.signInPw.text.toString())
+
                 finish()
             }
             else {
                 Toast.makeText(
-                    applicationContext, "비밀번호가 다릅니다.",
+                    applicationContext,
+                    "비밀번호가 다릅니다.",
                     Toast.LENGTH_SHORT
                 ).show()
 
