@@ -2,13 +2,12 @@ package com.example.train.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.train.R
 import com.example.train.databinding.ActivitySignInBinding
-import com.example.train.module.UserDataBase
+import com.example.train.module.DataBase
 import com.example.train.viewmodel.Sign_InModel
 
 class SigninActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class SigninActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySignInBinding
     private val model:Sign_InModel by viewModels()
 
-    private val db:UserDataBase = UserDataBase()
+    private val db:DataBase = DataBase()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

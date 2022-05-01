@@ -1,28 +1,40 @@
 package com.example.train.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.train.module.Auth
+import com.example.train.module.DataBase
 import com.example.train.module.UserDTO
-import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class WriteModel : ViewModel() {
     private val Auth: Auth = Auth()
 
+    private val db = FirebaseFirestore.getInstance()
+
     var auth = Auth.mAuth
 
-    val db = Firebase.firestore
+    private var UserName : String = ""
 
-    val user:UserDTO = UserDTO()
-
-    fun setDBName(id:String){
-
-        db.collection("User").document(id).get().addOnCompleteListener {
-           user.setname(it.result.get("NickName").toString())
-        }
+    fun UsergetName(email : String) : String{
+        db.collection("User").document(email)
+            .get()
+            .addOnCompleteListener {
+                SetName(it.result["NickName"] as String)
+            }
+        return GetName()
     }
-    fun getUserName():String{
-        return user.getname()!!
+
+
+    private fun SetName(username:String){
+        this.UserName = username
     }
+
+    private fun GetName() : String{
+        return UserName
+    }
+
 }

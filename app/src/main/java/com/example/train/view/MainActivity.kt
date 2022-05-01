@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mbinding.mainWrtieContents.setOnClickListener {
-            var intent = Intent(applicationContext,WriteActivity::class.java)
+            val intent = Intent(applicationContext,WriteActivity::class.java)
             startActivity(intent)
             finish()
         }
