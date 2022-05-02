@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Train">
+        <activity android:name=".view.SetNickNameActivity"
+            android:exported="false"/>
         <activity
             android:name=".view.WriteActivity"
             android:exported="false" />

@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                     val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                     try {
                         val account = task.getResult(ApiException::class.java)!!
-                        model.firebaseAuthWithGoogle(account)
+                        model.firebaseAuthWithGoogle(account,application)
                         Log.e("GoogleLogin", "fireBaseAuthWithGoogle:" + account.id)
                     } catch (e: ApiException) {
                         Log.e("GoogleLogin", "Google sign in failed" + e.message)
@@ -67,7 +67,6 @@ class LoginActivity : AppCompatActivity() {
 
         login.GoogleLogin.setOnClickListener {
             activityLauncher.launch(mGoogleSignInClient!!.signInIntent)
-            goMain(model.auth?.currentUser)
         }
 
         login.loginButton.setOnClickListener {

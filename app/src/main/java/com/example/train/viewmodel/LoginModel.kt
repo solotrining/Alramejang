@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.example.train.module.Auth
 import com.example.train.module.UserDTO
 import com.example.train.view.MainActivity
+import com.example.train.view.SetNickNameActivity
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -35,13 +36,15 @@ class LoginModel : ViewModel() {
     }
 
 
-    fun firebaseAuthWithGoogle(account : GoogleSignInAccount?){
+    fun firebaseAuthWithGoogle(account : GoogleSignInAccount?, app : Application){
         val credential = GoogleAuthProvider.getCredential(account?.idToken,null)
         auth?.signInWithCredential(credential)
         FirebaseAuth.getInstance().signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     saveUserDataToDatabase(task.result!!.user)
+                    val intent = Intent(app.applicationContext,SetNickNameActivity::class.java)
+                    ContextCompat.startActivity(app.applicationContext,intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),null)
                 }else
                     println("실패")
             }
@@ -72,11 +75,10 @@ class LoginModel : ViewModel() {
 
     private fun saveUserDataToDatabase(user : FirebaseUser?){
         val email : String? = user?.email
-        val uid : String? = user?.uid
 
         val userDTO = UserDTO()
         userDTO.email = email
 
-        FirebaseFirestore.getInstance().collection("users").document(uid!!).set(userDTO)
+        FirebaseFirestore.getInstance().collection("User").document(email!!).set(userDTO)
     }
 }
