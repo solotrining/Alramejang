@@ -9,9 +9,9 @@ class DataBase {
 
     fun putUser(name : String, id : String,pw : String) {
         val user = hashMapOf(
-            "Id" to id,
-            "PassWord" to pw,
-            "NickName" to name
+            "id" to id,
+            "password" to pw,
+            "nickname" to name
         )
             db.collection("User").document(id).set(user)
                 .addOnCompleteListener { Log.e("suc", "유저 데이터 기입 성공") }

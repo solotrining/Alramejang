@@ -23,6 +23,7 @@ class SetNickNameActivity : AppCompatActivity() {
 
         binding.GoogleNickNameNextBtn.setOnClickListener {
             model.GoogleSetNickName(binding.GoogleNickName.text.toString(),this.application)
+            finish()
         }
     }
 }

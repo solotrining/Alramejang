@@ -3,6 +3,7 @@ package com.example.train.viewmodel
 import android.app.Application
 import android.content.Intent
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.example.train.module.Auth
@@ -26,5 +27,6 @@ class SetNIckNameModel : ViewModel() {
 
         val intent = Intent(app.applicationContext,MainActivity::class.java)
         ContextCompat.startActivity(app.applicationContext,intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),null)
+
     }
 }

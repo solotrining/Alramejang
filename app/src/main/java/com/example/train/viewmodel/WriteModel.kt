@@ -1,40 +1,53 @@
 package com.example.train.viewmodel
 
-import android.util.Log
+import android.app.Application
+import android.content.Intent
+import android.net.Uri
+import android.provider.MediaStore
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.example.train.module.Auth
 import com.example.train.module.DataBase
-import com.example.train.module.UserDTO
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.example.train.view.MainActivity
+import com.google.firebase.storage.FirebaseStorage
+
 
 class WriteModel : ViewModel() {
     private val Auth: Auth = Auth()
 
-    private val db = FirebaseFirestore.getInstance()
+    private val Database = DataBase()
 
     var auth = Auth.mAuth
 
-    private var UserName : String = ""
+    private var userName : String = "default 입니당"
 
-    fun UsergetName(email : String) : String{
-        db.collection("User").document(email)
+    fun userGetName(email : String){
+
+        Database.db.collection("User").document(email)
             .get()
             .addOnCompleteListener {
-                SetName(it.result["NickName"] as String)
+                setName(it.result["nickname"].toString())
             }
-        return GetName()
     }
 
-
-    private fun SetName(username:String){
-        this.UserName = username
+    fun saveContent(title: String, Content: String){
+        Database.writePost(userName,
+            title,
+            Content)
     }
 
-    private fun GetName() : String{
-        return UserName
+    private fun setName(username : String) {
+        this.userName = username
+    }
+
+    fun saveImage(image : Uri, app : Application){
+        if(image == null){
+            val intent = Intent(app.applicationContext, MainActivity::class.java)
+            ContextCompat.startActivity(app.applicationContext, intent, null)
+        }
+
+        val storage = FirebaseStorage.getInstance()
     }
 
 }
