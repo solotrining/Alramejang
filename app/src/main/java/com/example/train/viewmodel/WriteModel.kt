@@ -37,17 +37,19 @@ class WriteModel : ViewModel() {
             Content)
     }
 
+
     private fun setName(username : String) {
         this.userName = username
     }
 
-    fun saveImage(image : Uri, app : Application){
-        if(image == null){
-            val intent = Intent(app.applicationContext, MainActivity::class.java)
-            ContextCompat.startActivity(app.applicationContext, intent, null)
-        }
-
+    fun saveImage(image : Uri){
         val storage = FirebaseStorage.getInstance()
+        val filename = "rep$userName.png"
+
+        val imgRef = storage.getReference("repPhoto/$filename")
+        imgRef.putFile(image)
+
+
     }
 
 }
