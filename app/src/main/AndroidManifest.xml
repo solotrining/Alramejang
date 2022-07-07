@@ -20,7 +20,7 @@
             android:name=".view.WriteActivity"
             android:exported="false" />
         <activity
-            android:name=".view.SigninActivity"
+            android:name=".view.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".view.LoginActivity"

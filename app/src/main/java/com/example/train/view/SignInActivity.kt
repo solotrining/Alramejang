@@ -9,12 +9,12 @@ import com.example.train.R
 import com.example.train.databinding.ActivitySignInBinding
 import com.example.train.module.DataBase
 import com.example.train.module.dto.UserDTO
-import com.example.train.viewmodel.SignInModel
+import com.example.train.viewmodel.Sign_InModel
 
-class SignInActivity : AppCompatActivity() {
+class SigninActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivitySignInBinding
-    private val model:SignInModel by viewModels()
+    private val model:Sign_InModel by viewModels()
 
     private val db:DataBase = DataBase()
 

@@ -7,7 +7,7 @@ import com.example.train.module.Auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class Sign_InModel : ViewModel() {
+class SignInModel : ViewModel() {
 
     private val Auth: Auth = Auth()
 
