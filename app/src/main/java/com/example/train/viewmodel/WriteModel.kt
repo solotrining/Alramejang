@@ -1,15 +1,10 @@
 package com.example.train.viewmodel
 
-import android.app.Application
-import android.content.Intent
 import android.net.Uri
-import android.provider.MediaStore
-import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.example.train.module.Auth
 import com.example.train.module.DataBase
-import com.example.train.view.MainActivity
+import com.example.train.module.dto.PostDTO
 import com.google.firebase.storage.FirebaseStorage
 
 
@@ -32,9 +27,11 @@ class WriteModel : ViewModel() {
     }
 
     fun saveContent(title: String, Content: String){
-        Database.writePost(userName,
-            title,
-            Content)
+        val post = PostDTO()
+        post.setWriter(userName)
+        post.setTitle(title)
+        post.setContent(Content)
+        Database.writePost(post)
     }
 
 
@@ -48,7 +45,6 @@ class WriteModel : ViewModel() {
 
         val imgRef = storage.getReference("repPhoto/$filename")
         imgRef.putFile(image)
-
 
     }
 

@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.example.train.module.Auth
-import com.example.train.module.UserDTO
+import com.example.train.module.dto.UserDTO
 import com.example.train.view.MainActivity
 import com.example.train.view.SetNickNameActivity
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -77,8 +77,8 @@ class LoginModel : ViewModel() {
         val email : String? = user?.email
 
         val userDTO = UserDTO()
-        userDTO.email = email
+        userDTO.setEmail(email!!)
 
-        FirebaseFirestore.getInstance().collection("User").document(email!!).set(userDTO)
+        FirebaseFirestore.getInstance().collection("User").document(email).set(userDTO)
     }
 }

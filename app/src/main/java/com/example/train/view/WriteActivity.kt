@@ -18,6 +18,7 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.train.R
 import com.example.train.databinding.ActivityWriteBinding
+import com.example.train.module.dto.PostDTO
 import com.example.train.viewmodel.WriteModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.ktx.auth

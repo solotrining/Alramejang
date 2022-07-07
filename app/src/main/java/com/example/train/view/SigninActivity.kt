@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.train.R
 import com.example.train.databinding.ActivitySignInBinding
 import com.example.train.module.DataBase
+import com.example.train.module.dto.UserDTO
 import com.example.train.viewmodel.Sign_InModel
 
 class SigninActivity : AppCompatActivity() {
@@ -28,10 +29,11 @@ class SigninActivity : AppCompatActivity() {
 
             if(binding.signInPw.text.toString() == binding.signInPwCheck.text.toString()) {
                 model.createAccount(binding.signInId.text.toString(), binding.signInPw.text.toString(), this)
-
-                db.putUser(binding.signInNickName.text.toString(),
-                    binding.signInId.text.toString(),
-                    binding.signInPw.text.toString())
+                val user: UserDTO = UserDTO()
+                user.setNickName(binding.signInNickName.text.toString())
+                user.setPassWord(binding.signInPw.text.toString())
+                user.setEmail(binding.signInId.text.toString())
+                db.putUser(user)
 
                 finish()
             }
