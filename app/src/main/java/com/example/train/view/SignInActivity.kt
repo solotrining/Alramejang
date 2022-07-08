@@ -2,6 +2,7 @@ package com.example.train.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -25,27 +26,35 @@ class SignInActivity : AppCompatActivity() {
         binding.signInModel = model
         binding.lifecycleOwner = this
 
+        val pattern = Patterns.EMAIL_ADDRESS
+        val id = binding.signInId.text.toString()
+        val pw = binding.signInPw.text.toString()
+
         binding.signInButton.setOnClickListener {
 
-            if(binding.signInPw.text.toString() == binding.signInPwCheck.text.toString()) {
-                model.createAccount(binding.signInId.text.toString(), binding.signInPw.text.toString(), this)
-                val user: UserDTO = UserDTO()
-                user.setNickName(binding.signInNickName.text.toString())
-                user.setPassWord(binding.signInPw.text.toString())
-                user.setEmail(binding.signInId.text.toString())
-                db.putUser(user)
+            if(pw == binding.signInPwCheck.text.toString()) {
+                if(pattern.matcher(id).matches()) {
+                    model.createAccount(id, pw, this)
+                    val user: UserDTO = UserDTO()
+                    user.setNickName(binding.signInNickName.text.toString())
+                    user.setPassWord(pw)
+                    user.setEmail(id)
+                    db.putUser(user)
 
-                finish()
+                    finish()
+                }
+                else{ makeToast("아이디가 이메일 형식과 맞지 않습니다.") }
             }
-            else {
-                Toast.makeText(
-                    applicationContext,
-                    "비밀번호가 다릅니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-            }
+            else { makeToast("비밀번호가 다릅니다.") }
 
         }
+    }
+
+    fun makeToast(text:String){
+        Toast.makeText(
+            applicationContext,
+            text,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
