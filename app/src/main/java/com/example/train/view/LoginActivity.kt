@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, model.getgso())
 
         login.toSignIn.setOnClickListener {
-            val goSignIn = Intent(applicationContext, SigninActivity::class.java)
+            val goSignIn = Intent(applicationContext, SignInActivity::class.java)
             startActivity(goSignIn)
         }
 
