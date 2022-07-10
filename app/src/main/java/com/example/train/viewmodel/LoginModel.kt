@@ -27,9 +27,7 @@ class LoginModel : ViewModel() {
             .build()
     }
 
-
-    private val privateAuth:Auth = Auth()
-    var auth = privateAuth.mAuth
+    var auth = Auth.getInstance()
 
     fun getgso(): GoogleSignInOptions {
         return gso

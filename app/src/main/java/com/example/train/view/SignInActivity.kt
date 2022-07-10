@@ -27,16 +27,16 @@ class SignInActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         val pattern = Patterns.EMAIL_ADDRESS
-        val id = binding.signInId.text.toString()
-        val pw = binding.signInPw.text.toString()
 
         binding.signInButton.setOnClickListener {
+            val id = binding.signInId.text.toString().trim()
+            val pw = binding.signInPw.text.toString().trim()
 
-            if(pw == binding.signInPwCheck.text.toString()) {
+            if(pw == binding.signInPwCheck.text.toString().trim()) {
                 if(pattern.matcher(id).matches()) {
                     model.createAccount(id, pw, this)
                     val user: UserDTO = UserDTO()
-                    user.setNickName(binding.signInNickName.text.toString())
+                    user.setNickName(binding.signInNickName.text.toString().trim())
                     user.setPassWord(pw)
                     user.setEmail(id)
                     db.putUser(user)
@@ -45,7 +45,10 @@ class SignInActivity : AppCompatActivity() {
                 }
                 else{ makeToast("아이디가 이메일 형식과 맞지 않습니다.") }
             }
-            else { makeToast("비밀번호가 다릅니다.") }
+            else { makeToast("비밀번호가 다릅니다.")
+                println("pw = $pw")
+                println("pwch = " + binding.signInPwCheck.text.toString().trim())
+            }
 
         }
     }

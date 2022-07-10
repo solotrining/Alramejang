@@ -9,13 +9,9 @@ import com.google.firebase.ktx.Firebase
 
 class SignInModel : ViewModel() {
 
-    private val Auth: Auth = Auth()
-
-    var auth = Auth.mAuth
-
+    private var auth = Auth.getInstance()
 
     fun createAccount(email: String, password: String,activity:Activity) {
-        auth = Firebase.auth
         if (email.isNotEmpty() && password.isNotEmpty()) {
             auth?.createUserWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(activity) { task ->
@@ -25,12 +21,7 @@ class SignInModel : ViewModel() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                    } else {
-                        Toast.makeText(
-                            activity.applicationContext, "계정 생성 실패",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    } else { println(task.result.toString()) }
                 }
         }
 

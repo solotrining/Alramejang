@@ -9,11 +9,9 @@ import com.google.firebase.storage.FirebaseStorage
 
 
 class WriteModel : ViewModel() {
-    private val Auth: Auth = Auth()
-
     private val Database = DataBase()
 
-    var auth = Auth.mAuth
+    var auth = Auth.getInstance()
 
     private var userName : String = "default 입니당"
 

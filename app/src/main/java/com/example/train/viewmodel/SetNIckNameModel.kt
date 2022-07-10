@@ -15,12 +15,9 @@ import com.google.firebase.ktx.Firebase
 
 class SetNIckNameModel : ViewModel() {
 
-    private val privateAuth: Auth = Auth()
-    var auth = privateAuth.mAuth
+    var auth = Auth.getInstance()
 
     fun GoogleSetNickName(Nickname : String, app : Application){
-        auth = Firebase.auth
-
         FirebaseFirestore.getInstance().collection("User")
             .document(auth!!.currentUser!!.email.toString())
             .update("nickname",Nickname)
