@@ -27,20 +27,16 @@ class BottomSheet : BottomSheetDialogFragment(), View.OnClickListener {
 
     private lateinit var activityResult : ActivityResultLauncher<Intent>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate<FragmentWriteBinding?>(inflater,R.layout.fragment_write, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_write, container, false)
 
         activityResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
-            ActivityResultCallback<ActivityResult>() { r ->
+            ActivityResultCallback { r ->
                 if(r.resultCode == AppCompatActivity.RESULT_OK && r.data != null){
                     imageUri = r.data!!.data!!
                 }
@@ -62,12 +58,6 @@ class BottomSheet : BottomSheetDialogFragment(), View.OnClickListener {
 
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        binding.repimage.setOnClickListener(this)
-//        binding.ImageSaveBtn.setOnClickListener(this)
-//    }
 
     override fun onClick(p0: View?) {
     }
